@@ -46,7 +46,8 @@ pipeline {
         stage('Deploy') {
             agent{
                 docker{
-                    image 'node:20.15.1-alpine' 
+                    //image 'node:20.15.1-alpine' 
+                    image 'my-docker-image'
                     reuseNode true
                 }
             }
@@ -59,7 +60,7 @@ pipeline {
                     # node_modules/.bin/netlify deploy --prod --dir=build
 
                     ##### custom docker image #####
-                    netlify --version
+                    npx netlify --version
                     echo "Deploying to production. Site ID: $NETLIFY_SITE_ID"
                     netlify status
                     netlify deploy --prod --dir=build
