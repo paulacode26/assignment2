@@ -5,14 +5,12 @@ pipeline {
         NETLIFY_SITE_ID = '12578d1e-78df-499e-b6d2-cf296e0413b2'
         NETLIFY_AUTH_TOKEN = credentials('assignment2myToken')
     }
-
     stages {
         stage('Docker'){
             steps{
                 sh 'docker build -t my-docker-image .'
             }
         }
-    stages {
         stage('Build') {
             agent{
                 docker{
